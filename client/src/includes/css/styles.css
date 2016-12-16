@@ -1,0 +1,24 @@
+/*@import "https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Lobster|Anton|Indie+Flower";
+
+
+My Custom CSS
+=============
+
+Author:  Karan Gumber
+Updated: December 2016
+Notes:    Hand coded for Hybrid Training
+
+*/
+#content{
+         border: 1em dotted black;
+      }
+      
+      #child{
+         border: 1em solid red;
+      }
+      #main{
+         border: 1em solid yellow;
+      }
+      #sibling{
+         border: 1em solid green;
+      }
