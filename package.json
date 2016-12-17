@@ -1,7 +1,7 @@
 {
-  "name": "react-boilerplate",
+  "name": "News Application",
   "version": "0.1.0",
-  "description": "ReactJS Boilerplate",
+  "description": "A News View Application",
   "main": "index.js",
   "scripts": {
     "build": "node node_modules/webpack/bin/webpack.js",
@@ -9,7 +9,7 @@
     "start": "node server/bin/www",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Raghu <raghuprathap478@gmail.com>",
+  "author": "Karan <karangumber05@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "cookie-parser": "^1.4.3",

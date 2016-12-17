@@ -1,7 +1,7 @@
 {
-  "name": "react-boilerplate",
+  "name": "NewsApp Client",
   "version": "0.1.0",
-  "description": "ReactJS Boilerplate",
+  "description": "NewsAppClient",
   "main": "index.js",
   "scripts": {
     "build": "node node_modules/webpack/bin/webpack.js",
