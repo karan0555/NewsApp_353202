@@ -38,7 +38,7 @@ router.post('/save',function(req,res,next){
 		title: req.body.title,
 		description: req.body.description,
 		url: req.body.url,
-		comment: req.body.comment
+		comment: ""
 	})
 
 	newNews.save(function(err){
