@@ -5,10 +5,10 @@ export default class FavouriteNewsComponent extends  React.Component{
 constructor(){
   super();
   this.state = {news:[]};
-  this.fetchSavedNews =  this.fetchSavedNews.bind(this);
+  
 }
 
-fetchSavedNews(){
+componentDidMount(){
   var that = this;
    $.ajax({
        url: "http://localhost:8080/news/getNews",
@@ -34,8 +34,8 @@ render()
 console.log("inside favourite");
  return(
    <div className="container-fluid">
-      <h1>Click The button to get Your Favourite News</h1>
-      <button type="button" onClick={this.fetchSavedNews} >Click Me</button>
+      <h1>View News Saved Before</h1>
+      
 
       <ViewNewsManager newsArray={this.state.news}/>
       
