@@ -1,7 +1,7 @@
 {
-  "name": "News Application",
+  "name": "News-Application",
   "version": "0.1.0",
-  "description": "A News View Application",
+  "description": "A-News-View-Application",
   "main": "index.js",
   "scripts": {
     "build": "node node_modules/webpack/bin/webpack.js",

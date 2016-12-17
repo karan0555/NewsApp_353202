@@ -7,8 +7,8 @@ var news = require('../models/news.js');
 
 
 /* GET home page. */
-/* endpoint is https://localhost:8080/news */
-router.get('/', function(req, res, next) {
+/* endpoint is http://localhost:8080/news/getNews */
+router.get('/getNews', function(req, res, next) {
 	// Find all movies.
 	news.find({},function(err, newsDemo){
 		if (err) throw err;
@@ -37,6 +37,9 @@ router.post('/save',function(req,res,next){
 	var newNews = new news({
 		title: req.body.title,
 		description: req.body.description,
+		urlToImage: req.body.urlToImage,
+		author: req.body.author,
+		publishedAt: req.body.publishedAt,
 		url: req.body.url,
 		comment: ""
 	})
@@ -89,7 +92,7 @@ router.delete('/delete/',function(req,res,next){
 
 	res.send(author);*/
 
-	news.findOneAndRemove({ title: 'Microsoft unveils surprisingly low specs needed for Windows 10 VR' }, function(err) {
+	news.findOneAndRemove({ title: '"HMP Birmingham riot: Officers regain control of prison' }, function(err) {
   if (err) throw err;
 
   // we have deleted the user
