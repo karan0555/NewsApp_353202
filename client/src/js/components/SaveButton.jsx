@@ -3,26 +3,33 @@ export default class SaveButton extends  React.Component{
 
 constructor(){
   super();
+  this.state = {data:"default"};
   this.saveNewsFunction = this.saveNewsFunction.bind(this);
 }
 
 saveNewsFunction(){
-    console.log('inside saved');
+    var that = this;
+    console.log("inside save");
       $.ajax({
         url: "http://localhost:8080/news/save",
         type: "POST",
         dataType: 'JSON',
         data : this.props.item,
-        success : function(msg){
+        success : function(){
         /*msg represents JSON data of news headlines sent back by external API*/
-          console.log('saved');
-          console.log(msg);
-          alert("Saved");
+          console.log("success");
         },
          error: function(err){
+         console.log("inside error");
+         that.setState({data:err.responseText});
+         that.showMessage();
           console.log(err);
         }
     });
+  }
+
+  showMessage(){
+    alert(this.state.data);
   }
 
 render()
