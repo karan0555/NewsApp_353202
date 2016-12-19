@@ -14,9 +14,9 @@ setProvider(){
 render()
 {
  return(
-   <div className="searchProvider">
-       <input type="text" placeholder="Enter News Provider" id="search" />
-       <button type="button" onClick={this.setProvider} >Show News</button>
+   <div className="jumbotron">
+       <input type="text" placeholder="Enter News Provider" id="search" /><br/>
+       <input type="button" className="btn btn-primary block-center" value="Search News" onClick={this.setProvider} />
    </div>
  );
 }

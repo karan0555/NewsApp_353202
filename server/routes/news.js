@@ -68,8 +68,8 @@ router.put('/update/',function(req,res,next){
 	description = req.body.author;
 	res.send(author);
 	*/
-
-	news.findOneAndUpdate({ title: 'Microsoft unveils surprisingly low specs needed for Windows 10 VR' }, { comment: 'this is my updated comment' }, function(err, news) {
+	console.log("COMMENTS IS "+req.body.comments)
+	news.findByIdAndUpdate(req.body._id, {comment:req.body.comments}, function(err, news) {
 		if (err) throw err;
 
   // we have the updated user returned to us

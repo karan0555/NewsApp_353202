@@ -37,7 +37,7 @@ export default class DeleteButton extends React.Component{
 		console.log(this.props);
 		return(
 			<span>
-				<button type="button" onClick={this.deleteNewsFunction} >Delete</button>
+				<button className="btn-warning" onClick={this.deleteNewsFunction}>Delete</button>
 			</span>
 		)
 	}

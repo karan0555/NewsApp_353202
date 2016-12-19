@@ -1,5 +1,6 @@
 var React = require('react');
 import DeleteButton from './DeleteButton.jsx';
+import UpdateComponent from './UpdateComponent.jsx';
 export default class FavNewsDisplay extends  React.Component{
 constructor(){
   super(); 
@@ -29,7 +30,8 @@ var newsItem = this.props.item;
           <h6>Comments</h6><textarea rows="2" cols="20" disabled>{this.props.item.comment}</textarea>
         </article>
       </section>
-      <DeleteButton item={this.props.item} functionUpdate = {this.updateNewsArray}/>
+      <DeleteButton item={this.props.item} functionUpdate = {this.updateNewsArray}/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <UpdateComponent item={this.props.item}/>
       </section>
       
    </div>

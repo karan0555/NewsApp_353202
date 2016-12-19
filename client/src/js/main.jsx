@@ -1,7 +1,7 @@
 
 import 'file?name=[name].[ext]!../index.html';
 import 'file?name=[name].[ext]!../includes/css/styles.css';
-
+import ModalWindow from './components/ModalWindow';
 import React from 'react';
 import ReactDOM from 'react-dom';
 var {browserHistory, hashHistory, Route, Router, IndexRoute}
@@ -20,6 +20,7 @@ render(){
 return (
 <div id="main">
 <NavbarComponent/>
+<ModalWindow/>
   <br/>
     {this.props.children}
 </div>
