@@ -1,10 +1,40 @@
 import React from 'react';
 
-export default DeleteButton extends React.Component{
+export default class DeleteButton extends React.Component{
 	constructor(){
 		super();
-
+		this.deleteNewsFunction = this.deleteNewsFunction.bind(this);
 	}
 
-	
+	deleteNewsFunction(){
+     var that = this;
+      $.ajax({
+        url: "http://localhost:8080/news/delete",
+        type: "DELETE",
+        data : that.props.item,
+        success : function(msg){
+        /*msg represents JSON data of news headlines sent back by external API*/
+          console.log("delete success");
+          that.props.functionUpdate();
+          console.log(msg);         
+        },
+         error: function(err){
+         console.log("inside delete error");
+          console.log(err);
+        }
+    });
+  }
+
+
+	render(){
+		console.log("inside delete component");
+		console.log(this.props);
+		return(
+			<span>
+				<button type="button" onClick={this.deleteNewsFunction} >Delete</button>
+			</span>
+		)
+	}
+
+
 }

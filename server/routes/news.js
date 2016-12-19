@@ -41,7 +41,7 @@ router.post('/save',function(req,res,next){
 		author: req.body.author,
 		publishedAt: req.body.publishedAt,
 		url: req.body.url,
-		comment: ""
+		comment: "This is Comment"
 	})
 
 	newNews.save(function(err){
@@ -77,7 +77,7 @@ router.put('/update/',function(req,res,next){
 });
 });
 
-//end point is http://localhost:8096/news/delete 
+//end point is http://localhost:8080/news/delete 
 router.delete('/delete/',function(req,res,next){
 	/*//body
 
@@ -92,11 +92,11 @@ router.delete('/delete/',function(req,res,next){
 
 	res.send(author);*/
 
-	news.findOneAndRemove({ title: '"HMP Birmingham riot: Officers regain control of prison' }, function(err) {
+	news.findByIdAndRemove(req.body._id, function(err) {
   if (err) throw err;
 
   // we have deleted the user
-  res.send("USER DELETED");
+  res.send("news DELETED");
 });
 });
 

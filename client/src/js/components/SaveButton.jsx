@@ -13,16 +13,17 @@ saveNewsFunction(){
       $.ajax({
         url: "http://localhost:8080/news/save",
         type: "POST",
-        dataType: 'JSON',
         data : this.props.item,
-        success : function(){
+        success : function(res){
         /*msg represents JSON data of news headlines sent back by external API*/
-          console.log("success");
+          console.log("inside save success");
+          that.setState({data:res});
+          console.log(res);
+         that.showMessage();
+
         },
          error: function(err){
-         console.log("inside error");
-         that.setState({data:err.responseText});
-         that.showMessage();
+         console.log("inside save error");        
           console.log(err);
         }
     });
@@ -38,7 +39,7 @@ render()
    <div className="save-btton">
        <section className= "row">
         <article className = "col-sm-6">
-          <button type = "button" onClick = {this.saveNewsFunction}>Save</button>
+          <button type = "button" className= "btn pill-right" onClick = {this.saveNewsFunction}>Save</button>
         </article>
        </section>
    </div>
