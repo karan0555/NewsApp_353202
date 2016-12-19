@@ -6,8 +6,8 @@ export default class ViewNewsManager extends React.Component{
 		super();
 		this.updateArray = this.updateArray.bind(this);		
 	}
-	updateArray(){
-		this.props.newsArrUpdate();
+	updateArray(item){
+		this.props.newsArrUpdate(item);
 	}
 	render(){
 		console.log("Inside View News Manager ");

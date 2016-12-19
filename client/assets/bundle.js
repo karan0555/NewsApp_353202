@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "528e0113edca3ff7697c"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "ce2abcecf40fb46e3238"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -13395,6 +13395,7 @@
 	    var _this = _possibleConstructorReturn(this, (DeleteButton.__proto__ || Object.getPrototypeOf(DeleteButton)).call(this));
 	
 	    _this.deleteNewsFunction = _this.deleteNewsFunction.bind(_this);
+	    _this.showAlert = _this.showAlert.bind(_this);
 	    return _this;
 	  }
 	
@@ -13409,14 +13410,20 @@
 	        success: function success(msg) {
 	          /*msg represents JSON data of news headlines sent back by external API*/
 	          console.log("delete success");
-	          that.props.functionUpdate();
+	          that.props.functionUpdate(that.props.item);
 	          console.log(msg);
+	          that.showAlert(msg);
 	        },
 	        error: function error(err) {
 	          console.log("inside delete error");
 	          console.log(err);
 	        }
 	      });
+	    }
+	  }, {
+	    key: "showAlert",
+	    value: function showAlert(msg) {
+	      alert(msg);
 	    }
 	  }, {
 	    key: "render",
@@ -13480,8 +13487,8 @@
 	
 	  _createClass(FavNewsDisplay, [{
 	    key: 'updateNewsArray',
-	    value: function updateNewsArray() {
-	      this.props.fxn();
+	    value: function updateNewsArray(item) {
+	      this.props.fxn(item);
 	    }
 	  }, {
 	    key: 'render',
@@ -13584,10 +13591,22 @@
 	
 	    _this.state = { news: [] };
 	    _this.getNewsArray = _this.getNewsArray.bind(_this);
+	    _this.changeNewsArray = _this.changeNewsArray.bind(_this);
 	    return _this;
 	  }
 	
 	  _createClass(FavouriteNewsComponent, [{
+	    key: 'changeNewsArray',
+	    value: function changeNewsArray(item) {
+	      var arr = this.state.news;
+	      var index = arr.findIndex(function (x) {
+	        return x._id == item._id;
+	      });
+	      console.log("index of item deleted is " + index);
+	      arr.splice(index, 1);
+	      this.setState({ news: arr });
+	    }
+	  }, {
 	    key: 'getNewsArray',
 	    value: function getNewsArray() {
 	      var that = this;
@@ -13626,7 +13645,7 @@
 	          null,
 	          'View News Saved Before'
 	        ),
-	        React.createElement(_ViewNewsManager2.default, { newsArray: this.state.news, newsArrUpdate: this.getNewsArray })
+	        React.createElement(_ViewNewsManager2.default, { newsArray: this.state.news, newsArrUpdate: this.changeNewsArray })
 	      );
 	    }
 	  }]);
@@ -14186,8 +14205,8 @@
 	
 		_createClass(ViewNewsManager, [{
 			key: 'updateArray',
-			value: function updateArray() {
-				this.props.newsArrUpdate();
+			value: function updateArray(item) {
+				this.props.newsArrUpdate(item);
 			}
 		}, {
 			key: 'render',

@@ -6,8 +6,8 @@ constructor(){
   this.updateNewsArray = this.updateNewsArray.bind(this); 
 }
 
-updateNewsArray(){
-  this.props.fxn();
+updateNewsArray(item){
+  this.props.fxn(item);
 }
 
 render() 

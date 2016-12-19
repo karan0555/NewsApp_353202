@@ -4,6 +4,7 @@ export default class DeleteButton extends React.Component{
 	constructor(){
 		super();
 		this.deleteNewsFunction = this.deleteNewsFunction.bind(this);
+    this.showAlert = this.showAlert.bind(this);
 	}
 
 	deleteNewsFunction(){
@@ -15,14 +16,19 @@ export default class DeleteButton extends React.Component{
         success : function(msg){
         /*msg represents JSON data of news headlines sent back by external API*/
           console.log("delete success");
-          that.props.functionUpdate();
-          console.log(msg);         
+          that.props.functionUpdate(that.props.item);
+          console.log(msg); 
+          that.showAlert(msg);        
         },
          error: function(err){
          console.log("inside delete error");
           console.log(err);
         }
     });
+  }
+
+  showAlert(msg){
+    alert(msg);
   }
 
 
