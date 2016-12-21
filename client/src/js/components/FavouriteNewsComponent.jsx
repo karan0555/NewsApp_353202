@@ -45,7 +45,7 @@ render()
 {
 console.log("inside favourite");
  return(
-   <div className="container-fluid">
+   <div className="container-fluid" id="fav">
       <h1>View News Saved Before</h1>
       
 

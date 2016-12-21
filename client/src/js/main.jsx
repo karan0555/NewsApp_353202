@@ -1,7 +1,7 @@
 
 import 'file?name=[name].[ext]!../index.html';
 import 'file?name=[name].[ext]!../includes/css/styles.css';
-import ModalWindow from './components/ModalWindow';
+import Login from './components/Login.jsx'
 import React from 'react';
 import ReactDOM from 'react-dom';
 var {browserHistory, hashHistory, Route, Router, IndexRoute}
@@ -20,17 +20,16 @@ render(){
 return (
 <div id="main">
 <NavbarComponent/>
-<ModalWindow/>
-  <br/>
+  <br/><br/><br/><br/><br/><br/><br/><br/>
     {this.props.children}
 </div>
 )
 }
 }
 ReactDOM.render(
-<Router history={hashHistory}>
+<Router history={browserHistory}>
              <Route path="/" component={MainComponent} >
-             	<IndexRoute component={Home} />
+             	<IndexRoute component={Login} />
              	<Route path="/favNews" component={FavouriteNewsComponent} />
              	<Route path="/home" component={Home}/>
              	<Route path="/about" component={About}/>

@@ -6,9 +6,14 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require("mongoose");
 
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var connectflash = require('connect-flash');
+
 var index = require('./routes/index');
 var users = require('./routes/users');
-var news = require('./routes/news');
+var news = require('./routes/news'); 
+var user = require('./models/users');
 
 var webpackDevMiddleware = require("webpack-dev-middleware");
 var webpack = require("webpack");
@@ -19,6 +24,29 @@ var app = express();
 var compiler = webpack(webpackConfig);
 
 
+passport.serializeUser(function(user,done){
+  console.log("inside Serial");
+  done(null,user.id);
+})
+
+passport.deserializeUser(function(id,done){
+  console.log("deserializeUser");
+  user.findById(id, function(err, user){
+    console.log("inside deserializeUser "+user);
+    done(err,user);
+  });
+});
+
+passport.use(new LocalStrategy(
+  function(username,password,done){
+    user.findOne({username: username, password: password}, function(err, user){
+      if(err) { return done(err); }
+      if(!user){ return done(null, false);}
+      // if(!user.verifyPassword(password)){ return done(null,false); }
+      return done(null, user);
+    });
+  }
+  ));
 
 app.use(webpackDevMiddleware(compiler, {
  publicPath: webpackConfig.output.publicPath,
@@ -49,6 +77,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(require('express-session')({secret: 'accesskey'}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(connectflash());
 
 app.use('/', index);
 app.use('/users', users);

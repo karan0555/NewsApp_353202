@@ -2,7 +2,9 @@ var express = require('express');
 var router = express.Router();
 
 var user = require('../models/users.js');
-
+var passport = require('passport');
+var Strategy = require('passport-local').Strategy;
+var connectflash = require('connect-flash');
 
 
 /* GET home page. */
@@ -17,7 +19,7 @@ router.get('/', function(req, res, next) {
 
 /* end point is http://localhost:8090/users/login?user=value&pass=value */
 
-router.post('/login',function(req,res,next) {
+router.post('/save',function(req,res,next) {
 	// body...
 	var newLogin = new user({
 	username: req.query.user,
@@ -34,6 +36,20 @@ router.post('/login',function(req,res,next) {
 
 		res.send('User Saved Successfully');
 	})
+});
+
+router.get('/view',function(req,res){
+	user.find({},function(err,user){
+		if(err) throw err;
+		res.send(user);
+	});
+});
+
+router.post('/login',
+	passport.authenticate('local',{failureRedirect: '/users/login'}),
+	function(req,res){
+		console.log("HELLO FROMM LOGIUN ROUTE");
+	res.send('Welcome to login');
 });
 
 module.exports = router;

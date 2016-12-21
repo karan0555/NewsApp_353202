@@ -68,7 +68,7 @@ router.put('/update/',function(req,res,next){
 	description = req.body.author;
 	res.send(author);
 	*/
-	console.log("COMMENTS IS "+req.body.comments)
+	console.log("COMMENTS IS "+req.body.comments);
 	news.findByIdAndUpdate(req.body._id, {comment:req.body.comments}, function(err, news) {
 		if (err) throw err;
 
