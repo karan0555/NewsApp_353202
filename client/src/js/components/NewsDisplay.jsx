@@ -8,21 +8,21 @@ console.log("NEWS DISPLAY");
 console.log(this.props.item);
 var newsItem = this.props.item;
  return(
-   <div className="news-display">
-       <section className = "jumbotron" >
+   <span className="news-display">
+    <section>
       <section className = "row">
         <article className = "col-sm-4">
           <img src={this.props.item.urlToImage} height = "200" width = "300" />
         </article>
         <article className = "col-sm-8">
-          <h3> Title: {this.props.item.title} </h3>
+          <h2>{this.props.item.title} </h2>
           <h6>Published At : {this.props.item.publishedAt} </h6>
-          <p>{this.props.item.description}</p>
+          <p>{this.props.item.description}<a href={this.props.item.url} target="_blank">more...</a></p>
         </article>
       </section>
-     <SaveButton item={newsItem}/>
-      </section>
-   </div>
+      
+    </section>
+  </span>
  );
 }
 }

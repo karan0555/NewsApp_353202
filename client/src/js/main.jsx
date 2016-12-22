@@ -20,7 +20,7 @@ render(){
 return (
 <div id="main">
 <NavbarComponent/>
-  <br/><br/><br/><br/><br/><br/><br/><br/>
+  <br/><br/><br/>
     {this.props.children}
 </div>
 )
@@ -30,6 +30,7 @@ ReactDOM.render(
 <Router history={browserHistory}>
              <Route path="/" component={MainComponent} >
              	<IndexRoute component={Login} />
+                <Route path="/login" component={Login} />
              	<Route path="/favNews" component={FavouriteNewsComponent} />
              	<Route path="/home" component={Home}/>
              	<Route path="/about" component={About}/>

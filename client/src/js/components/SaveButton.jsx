@@ -35,14 +35,13 @@ saveNewsFunction(){
 
 render()
 {
- return(
-   <div className="save-btton">
-       <section className= "row">
-        <article className = "col-sm-6">
-          <button type = "button" className= "btn pill-right" onClick = {this.saveNewsFunction}>Save</button>
-        </article>
-       </section>
-   </div>
+  console.log("Save News with COMPONENT");
+  console.log(this.props.item);
+  return(
+    <span className="save-btton block-center">
+          <br/>
+          <button type="button" className="btn-primary" onClick={this.saveNewsFunction}>Save</button>
+       </span>
  );
 }
 }

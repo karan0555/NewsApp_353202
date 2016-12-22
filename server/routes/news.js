@@ -3,12 +3,9 @@ var router = express.Router();
 
 var news = require('../models/news.js');
 
-//var newsDemo = news.find
-
-
 /* GET home page. */
 /* endpoint is http://localhost:8080/news/getNews */
-router.get('/getNews', function(req, res, next) {
+router.get('/getNews',isLoggedIn, function(req, res, next) {
 	// Find all movies.
 	news.find({},function(err, newsDemo){
 		if (err) throw err;
@@ -19,7 +16,7 @@ router.get('/getNews', function(req, res, next) {
 
 
 //end point is http://localhost:8080/news/save 
-router.post('/save',function(req,res,next){
+router.post('/save',isLoggedIn,function(req,res,next){
 	//body
 	/*
 	//reading title key of json object
@@ -55,7 +52,7 @@ router.post('/save',function(req,res,next){
 });
 
 //end point is http://localhost:8096/news/update 
-router.put('/update/',function(req,res,next){
+router.put('/update/',isLoggedIn,function(req,res,next){
 	/*//body
 
 	//reading author key of json object
@@ -78,7 +75,7 @@ router.put('/update/',function(req,res,next){
 });
 
 //end point is http://localhost:8080/news/delete 
-router.delete('/delete/',function(req,res,next){
+router.delete('/delete/',isLoggedIn,function(req,res,next){
 	/*//body
 
 	//reading author key of json object
@@ -99,5 +96,16 @@ router.delete('/delete/',function(req,res,next){
   res.send("news DELETED");
 });
 });
+
+function isLoggedIn(req,res,next){
+	if(req.isAuthenticated()){
+			console.log('logged in');
+			return next();
+		}
+	else{
+		res.join("login before operation");
+	}
+
+	}
 
 module.exports = router;

@@ -1,5 +1,6 @@
 var React = require('react');
 import NewsDisplay from './NewsDisplay';
+import SaveButton from './SaveButton.jsx';
 export default class NewsManager extends  React.Component{
 
 constructor(){
@@ -15,7 +16,8 @@ render()
    <div>
        {
           this.props.newsArr.map(function(Item){
-            return(<NewsDisplay item={Item} />)
+            return(<div className="jumbotron manager"><NewsDisplay item={Item} />
+                    <SaveButton item={Item}/></div>)
             }
           )
         }

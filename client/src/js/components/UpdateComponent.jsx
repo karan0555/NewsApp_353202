@@ -82,7 +82,7 @@ export default class DeleteButton extends React.Component{
                 </article>
 
                 <article className="modal-footer">
-                  <button className="btn btn-success pull-right close" data-dismiss="modal" type="submit" onClick={this.updateNewsFunction}>Submit</button>
+                  <button className="btn btn-success pull-right" data-dismiss="modal" type="submit" onClick={this.updateNewsFunction}>Submit</button>
                 </article> 
             </section>
           </article>

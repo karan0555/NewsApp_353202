@@ -12,13 +12,17 @@ Notes:    Hand coded for Hybrid Training
 
 
 #main {
-   border: 3px solid yellow;
+   border: 1em solid yellow;
 }
 
 #home {
-	border: 2px solid blue;
+	border: 1em solid blue;
 }
 
 #fav {
-	border: 2 solid green;
+	border: 1em solid green;
+}
+
+#manager {
+	border: 1em solid cyan;
 }
